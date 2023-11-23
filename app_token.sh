@@ -1,13 +1,4 @@
 #!/bin/bash
-#
-# Request an ACCESS_TOKEN to be used by a GitHub APP
-# Environment variable that need to be set up:
-# * APP_ID, the GitHub's app ID
-# * APP_KEY, the content of GitHub app's private key in PEM format.
-# * APP_ORG, the org name to install GitHub's app
-#
-# https://github.com/orgs/community/discussions/24743#discussioncomment-3245300
-#
 
 set -o pipefail
 
