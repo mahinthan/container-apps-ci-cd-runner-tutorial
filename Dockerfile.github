@@ -2,16 +2,14 @@ FROM ghcr.io/actions/actions-runner:2.304.0
 
 USER root
 
-WORKDIR /actions-runner
-
 # install curl and jq
 RUN apt-get update && apt-get install -y curl jq && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-COPY github-actions-runner/entrypoint.sh ./
-COPY app_token.sh ../app_token.sh
-RUN chmod +x ./entrypoint.sh ../app_token.sh
+COPY github-actions-runner/entrypoint.sh ./entrypoint.sh
+COPY app_token.sh ./app_token.sh
+RUN chmod +x ./entrypoint.sh ./app_token.sh
 
 USER runner
 

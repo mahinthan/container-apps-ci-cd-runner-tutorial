@@ -2,7 +2,6 @@
 
 set -o pipefail
 
-
 _GITHUB_HOST=${GITHUB_HOST:="github.com"}
 
 # If URL is not github.com then use the enterprise api endpoint
@@ -69,9 +68,8 @@ request_access_token() {
         -H "${API_HEADER}" \
         "${APP_INSTALLATIONS_URI}" \
     )
-    echo $app_installations_response
+
     access_token_url=$(echo "${app_installations_response}" | jq --raw-output '.[] | select (.account.login == "'"${APP_ORG}"'" and .app_id  == '"${APP_ID}"') .access_tokens_url')
-    echo $access_token_url
     curl -sX POST \
         -H "${CONTENT_LENGTH_HEADER}" \
         -H "${auth_header}" \
